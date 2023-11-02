@@ -1,0 +1,315 @@
+
+Ronda 0:
+Estado después de Inverso SubBytes:
+C4 06 B1 97 
+F9 DC 00 6F 
+95 50 A0 20 
+45 1B E5 22 
+Estado después de Inverso ShiftRows:
+C4 DC A0 22 
+F9 50 E5 97 
+95 1B B1 6F 
+45 06 00 20 
+Estado después de Inversa MixColumns:
+53 CC C3 B1 
+4E 57 B0 38 
+DE B9 3C AF 
+A9 86 0B DE 
+Estado antes de Add Round Key:
+53 CC C3 B1 
+4E 57 B0 38 
+DE B9 3C AF 
+A9 86 0B DE 
+Subclave de la ronda actual:
+67 32 0B 0B 
+65 0B 0B 0B 
+32 0B 0B 0B 
+33 0B 0B 0B 
+Estado después de Add Round Key:
+34 FE C8 BA 
+2B 5C BB 33 
+EC B2 37 A4 
+9A 8D 00 D5 
+
+Ronda 1:
+Estado después de Inverso SubBytes:
+18 BB E8 F4 
+F1 4A EA C3 
+CE 37 9A 49 
+B8 5D 63 03 
+Estado después de Inverso ShiftRows:
+18 4A 9A 03 
+F1 37 63 F4 
+CE 5D E8 C3 
+B8 BB EA 49 
+Estado después de Inversa MixColumns:
+4E 10 BD 7C 
+2B 78 11 D9 
+88 95 17 F1 
+8B E7 B1 A0 
+Estado antes de Add Round Key:
+4E 10 BD 7C 
+2B 78 11 D9 
+88 95 17 F1 
+8B E7 B1 A0 
+Subclave de la ronda actual:
+29 39 00 00 
+46 00 00 00 
+F1 00 00 00 
+10 00 00 6C 
+Estado después de Add Round Key:
+67 29 BD 7C 
+6D 78 11 D9 
+79 95 17 F1 
+9B E7 B1 CC 
+
+Ronda 2:
+Estado después de Inverso SubBytes:
+85 A5 7A 10 
+3C BC 82 35 
+B6 2A F0 A1 
+14 94 C8 4B 
+Estado después de Inverso ShiftRows:
+85 BC F0 4B 
+3C 2A C8 10 
+B6 94 7A 35 
+14 A5 82 A1 
+Estado después de Inversa MixColumns:
+F7 28 F2 36 
+2C EA 51 30 
+40 77 51 A6 
+32 95 C9 A1 
+Estado antes de Add Round Key:
+F7 28 F2 36 
+2C EA 51 30 
+40 77 51 A6 
+32 95 C9 A1 
+Subclave de la ronda actual:
+3E 32 0B 0B 
+C4 0B 0B 0B 
+F8 0B 0B 67 
+21 0B 0B 22 
+Estado después de Add Round Key:
+C9 1A F9 3D 
+E8 E1 5A 3B 
+B8 7C 5A C1 
+13 9E C2 83 
+
+Ronda 3:
+Estado después de Inverso SubBytes:
+DD A2 99 27 
+9B F8 BE E2 
+6C 10 BE 78 
+7D 0B 25 EC 
+Estado después de Inverso ShiftRows:
+DD F8 BE EC 
+9B 10 25 27 
+6C 0B 99 E2 
+7D A2 BE 78 
+Estado después de Inversa MixColumns:
+06 39 19 71 
+72 67 03 57 
+2F FA 6B 02 
+30 E7 9C 1A 
+Estado antes de Add Round Key:
+06 39 19 71 
+72 67 03 57 
+2F FA 6B 02 
+30 E7 9C 1A 
+Subclave de la ronda actual:
+78 39 00 00 
+24 00 00 6C 
+CF 00 00 29 
+10 00 00 35 
+Estado después de Add Round Key:
+7E 00 19 71 
+56 67 03 3B 
+E0 FA 6B 2B 
+20 E7 9C 2F 
+
+Ronda 4:
+Estado después de Inverso SubBytes:
+F3 63 D4 A3 
+B1 85 7B E2 
+E1 2D 7F F1 
+B7 94 DE 15 
+Estado después de Inverso ShiftRows:
+F3 85 7F 15 
+B1 2D DE A3 
+E1 94 D4 E2 
+B7 63 7B F1 
+Estado después de Inversa MixColumns:
+63 05 59 2B 
+91 1B 3E EB 
+28 C4 9F 7D 
+C7 84 61 87 
+Estado antes de Add Round Key:
+63 05 59 2B 
+91 1B 3E EB 
+28 C4 9F 7D 
+C7 84 61 87 
+Subclave de la ronda actual:
+52 32 0B 67 
+EF 0B 0B 22 
+F8 0B 0B 3E 
+21 0B 0B 73 
+Estado después de Add Round Key:
+31 37 52 4C 
+7E 10 35 C9 
+D0 CF 94 43 
+E6 8F 6A F4 
+
+Ronda 5:
+Estado después de Inverso SubBytes:
+C7 9A 00 29 
+F3 CA 96 DD 
+70 8A 22 1A 
+8E 73 02 BF 
+Estado después de Inverso ShiftRows:
+C7 CA 22 BF 
+F3 8A 02 29 
+70 73 00 DD 
+8E 9A 96 1A 
+Estado después de Inversa MixColumns:
+65 24 5D D6 
+E3 CA 13 93 
+D4 B0 81 53 
+D9 8B 19 1A 
+Estado antes de Add Round Key:
+65 24 5D D6 
+E3 CA 13 93 
+D4 B0 81 53 
+D9 8B 19 1A 
+Subclave de la ronda actual:
+F5 32 0B 22 
+07 0B 0B 3E 
+0C 0B 0B 73 
+33 0B 67 3E 
+Estado después de Add Round Key:
+90 16 56 F4 
+E4 C1 18 AD 
+D8 BB 8A 20 
+EA 80 7E 24 
+
+Ronda 6:
+Estado después de Inverso SubBytes:
+60 47 B1 BF 
+69 78 AD 95 
+61 EA 7E B7 
+87 CD F3 36 
+Estado después de Inverso ShiftRows:
+60 78 7E 36 
+69 EA F3 BF 
+61 CD B1 95 
+87 47 AD B7 
+Estado después de Inversa MixColumns:
+9D 96 59 BD 
+5F BC DA 21 
+EE E6 18 81 
+94 40 7A 05 
+Estado antes de Add Round Key:
+9D 96 59 BD 
+5F BC DA 21 
+EE E6 18 81 
+94 40 7A 05 
+Subclave de la ronda actual:
+F8 39 00 35 
+3A 00 00 78 
+3B 00 6C 59 
+02 00 29 D7 
+Estado después de Add Round Key:
+65 AF 59 88 
+65 BC DA 59 
+D5 E6 74 D8 
+96 40 53 D2 
+
+Ronda 7:
+Estado después de Inverso SubBytes:
+4D 79 CB C4 
+4D 65 57 CB 
+03 8E 92 61 
+90 09 ED B5 
+Estado después de Inverso ShiftRows:
+4D 65 92 B5 
+4D 8E ED C4 
+03 09 CB CB 
+90 79 57 61 
+Estado después de Inversa MixColumns:
+DE 42 AD A2 
+33 00 72 DA 
+8F 42 0B 25 
+8C 01 5F 09 
+Estado antes de Add Round Key:
+DE 42 AD A2 
+33 00 72 DA 
+8F 42 0B 25 
+8C 01 5F 09 
+Subclave de la ronda actual:
+FB 39 00 78 
+C6 00 6C 35 
+B8 00 29 FE 
+02 00 35 CD 
+Estado después de Add Round Key:
+25 7B AD DA 
+F5 00 1E EF 
+37 42 22 DB 
+8E 01 6A C4 
+
+Ronda 8:
+Estado después de Inverso SubBytes:
+3F 21 95 57 
+E6 63 72 DF 
+9A 2C 93 B9 
+19 7C 02 1C 
+Estado después de Inverso ShiftRows:
+3F 63 93 1C 
+E6 2C 02 57 
+9A 7C 95 DF 
+19 21 72 B9 
+Estado después de Inversa MixColumns:
+CC 44 DD 0F 
+EF 9E D4 B7 
+DC 41 36 DD 
+A7 71 3E C5 
+Estado antes de Add Round Key:
+CC 44 DD 0F 
+EF 9E D4 B7 
+DC 41 36 DD 
+A7 71 3E C5 
+Subclave de la ronda actual:
+E5 32 67 52 
+83 0B 22 DC 
+8F 0B 3E F3 
+33 0B 73 88 
+Estado después de Add Round Key:
+29 76 BA 5D 
+6C 95 F6 6B 
+53 4A 08 2E 
+94 7A 4D 4D 
+
+Ronda 9:
+Estado después de Inverso SubBytes:
+A5 38 F4 4C 
+50 2A 42 7F 
+ED D6 30 31 
+22 DA E3 E3 
+Estado después de Inverso ShiftRows:
+A5 2A 30 E3 
+50 D6 E3 4C 
+ED DA F4 7F 
+22 38 42 31 
+Estado antes de Add Round Key:
+A5 2A 30 E3 
+50 D6 E3 4C 
+ED DA F4 7F 
+22 38 42 31 
+Subclave de la ronda actual:
+1A 39 29 FE 
+74 00 35 CD 
+CF 00 78 FB 
+10 6C 35 DB 
+Estado después de Add Round Key:
+BF 13 19 1D 
+24 D6 D6 81 
+22 DA 8C 84 
+32 54 77 EA 
