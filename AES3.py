@@ -19,12 +19,36 @@ SBox = (
 )
 
 
-# Función para aplicar el relleno PKCS7 a un texto
 def aplicar_relleno_PKCS7(texto, tamaño_bloque):
     longitud_texto = len(texto)
     caracteres_restantes = tamaño_bloque - (longitud_texto % tamaño_bloque)
-    texto_relleno = texto + chr(caracteres_restantes) * caracteres_restantes
+    if caracteres_restantes != 0:
+        texto_relleno = texto + \
+            chr(caracteres_restantes) * (tamaño_bloque - longitud_texto)
+    else:
+        texto_relleno = texto
     return texto_relleno
+
+
+def rellenar_con_PKCS7(texto, clave):
+    longitud_texto = len(texto)
+    caracteres_restantes_texto = 16 - (longitud_texto % 16)
+    if caracteres_restantes_texto != 0:
+        texto_relleno = texto + \
+            chr(caracteres_restantes_texto) * caracteres_restantes_texto
+    else:
+        texto_relleno = texto
+
+    longitud_clave = len(clave)
+    caracteres_restantes_clave = 16 - (longitud_clave % 16)
+    if caracteres_restantes_clave != 0:
+        clave_relleno = clave + \
+            chr(caracteres_restantes_clave) * caracteres_restantes_clave
+    else:
+        clave_relleno = clave
+
+    return texto_relleno, clave_relleno
+
 
 # Función para generar subclaves
 
@@ -52,9 +76,15 @@ def generar_subclaves(clave):
 
 
 def add_round_key(estado, subclave):
+    # print("Estado antes de Add Round Key:")
+    imprimir_estado(estado)  # Imprime el estado antes de aplicar Add Round Key
     # Realiza la operación XOR en cada byte del estado con la subclave
     for i in range(len(estado)):
         estado[i] ^= subclave[i]
+   # print("Subclave de la ronda actual:")
+    imprimir_estado(subclave)
+    # print("Estado después de Add Round Key:")
+    imprimir_estado(estado)
 
 
 def imprimir_estado(estado):
@@ -62,8 +92,8 @@ def imprimir_estado(estado):
         for columna in range(4):
             index = fila + columna * 4
             # Imprime el valor en formato hexadecimal con dos dígitos
-            print(f"{estado[index]:02X}", end=" ")
-        print()
+            # print(f"{estado[index]:02X}", end=" ")
+        # print()
 
 
 def imprimir_subclave(subclave):
@@ -71,20 +101,20 @@ def imprimir_subclave(subclave):
         for columna in range(4):
             index = fila + columna * 4
             # Imprime el valor en formato hexadecimal con dos dígitos
-            print(f"{subclave[index]:02X}", end=" ")
-        print()
+           # print(f"{subclave[index]:02X}", end=" ")
+        # print()
 
 
 def imprimir_estado_y_subclave(ronda, estado, subclave):
-    print(f"\nRonda {ronda}:")
+   # print(f"\nRonda {ronda}:")
 
-    print("Estado antes de Add Round Key:")
+    # print("Estado antes de Add Round Key:")
     imprimir_estado(estado)
 
-    print("Subclave de la ronda actual:")
+    # print("Subclave de la ronda actual:")
     imprimir_estado(subclave)
 
-    print("Estado después de Add Round Key:")
+    # print("Estado después de Add Round Key:")
     imprimir_estado(estado)
 
 
@@ -147,73 +177,30 @@ def gf_mult(a, b):
         b >>= 1
     return resultado
 
-# Función para aplicar la operación Inverse Sub Bytes
+# Función para agregar la clave principal al texto plano
 
 
-def inverse_sub_bytes(estado):
+def add_round_key_inicio(estado, clave_principal):
     for i in range(len(estado)):
-        estado[i] = SBox.index(estado[i])
-
-# Función para desplazar las filas en sentido inverso
-
-
-def inverse_shift_rows(estado):
-    for fila in range(1, 4):
-        # Desplaza la fila hacia la derecha en función de su índice
-        estado[fila * 4:(fila + 1) * 4] = estado[fila * 4:(fila + 1)
-                                                 * 4][-fila:] + estado[fila * 4:(fila + 1) * 4][:-fila]
-
-# Función para realizar la operación Inverse Mix Columns
-
-
-def inverse_mix_columns(estado):
-    nuevo_estado = [0] * 16
-    matriz_mezcla_inversa = [
-        0x0E, 0x0B, 0x0D, 0x09,
-        0x09, 0x0E, 0x0B, 0x0D,
-        0x0D, 0x09, 0x0E, 0x0B,
-        0x0B, 0x0D, 0x09, 0x0E
-    ]
-
-    for columna in range(4):
-        for fila in range(4):
-            resultado = 0
-            for i in range(4):
-                resultado ^= gf_mult(
-                    matriz_mezcla_inversa[i + columna * 4], estado[i + fila * 4])
-            nuevo_estado[columna * 4 + fila] = resultado
-
-    return nuevo_estado
+        estado[i] ^= clave_principal[i]
 
 
 # Línea divisoria
 salida = '=' * 100 + '\n'
 
-# Solicita la entrada del usuario y verifica que tenga una longitud de 16 caracteres
-entrada = input("Por favor, ingresa un texto de exactamente 16 caracteres: ")
-while len(entrada) != 16:
-    diferencia = 16 - len(entrada)
-    if diferencia > 0:
-        print(
-            f"El texto no tiene la longitud correcta. Faltan {diferencia} caracteres para ser 16.")
-    else:
-        print(
-            f"El texto no tiene la longitud correcta. Hay {abs(diferencia)} caracteres de más.")
-    entrada = input(
-        "Por favor, ingresa un texto de exactamente 16 caracteres: ")
+# Reemplaza esta parte del código para ingresar texto y clave con relleno
+entrada = input("Por favor, ingresa un texto: ")[
+    :16]  # Limita el texto a 16 caracteres
+clave = input("Por favor, ingresa una clave: ")[
+    :16]  # Limita la clave a 16 caracteres
 
-# Solicita la clave del usuario y verifica que tenga una longitud de 16 caracteres
-clave = input("Por favor, ingresa una clave de exactamente 16 caracteres: ")
-while len(clave) != 16:
-    diferencia = 16 - len(clave)
-    if diferencia > 0:
-        print(
-            f"La clave no tiene la longitud correcta. Faltan {diferencia} caracteres para ser 16.")
-    else:
-        print(
-            f"La clave no tiene la longitud correcta. Hay {abs(diferencia)} caracteres de más.")
-    clave = input(
-        "Por favor, ingresa una clave de exactamente 16 caracteres: ")
+
+# Con la llamada a la función rellenar_con_PKCS7
+entrada, clave = rellenar_con_PKCS7(entrada, clave)
+
+# Imprimir el texto con relleno y la clave con relleno
+print(f"Texto con relleno: {entrada}")
+print(f"Clave con relleno: {clave}")
 
 
 # Convierte la entrada a una lista de enteros
@@ -234,36 +221,25 @@ for i, subclave in enumerate(subclaves):
             salida += f"{subclave[index]:02X} "
         salida += '\n'
 
+
+salida += '=' * 100 + '\n'
+
+# Aplica "Add Round Key" al comienzo con la clave principal
+add_round_key_inicio(entrada, clave_bytes)
+
+# Agrega esta parte para mostrar el Add Round Key Inicial en el archivo
+salida += "Estado de Add Round Key Inicial:\n"
+for fila in range(4):
+    for columna in range(4):
+        index = fila + columna * 4
+        salida += f"{entrada[index]:02X} "
+    salida += '\n'
+
 salida += '=' * 100 + '\n'
 
 for ronda in range(10):
     subclave_actual = subclaves[ronda]
     salida += f"\nRonda {ronda}:\n"
-
-    salida += "Estado antes de Add Round Key:\n"
-    for fila in range(4):
-        for columna in range(4):
-            index = fila + columna * 4
-            salida += f"{entrada[index]:02X} "
-        salida += '\n'
-
-    salida += "Subclave de la ronda actual:\n"
-    for fila in range(4):
-        for columna in range(4):
-            index = fila + columna * 4
-            salida += f"{subclave_actual[index]:02X} "
-        salida += '\n'
-
-    # Realiza Add Round Key
-    for i in range(len(entrada)):
-        entrada[i] ^= subclave_actual[i]
-
-    salida += "Estado después de Add Round Key:\n"
-    for fila in range(4):
-        for columna in range(4):
-            index = fila + columna * 4
-            salida += f"{entrada[index]:02X} "
-        salida += '\n'
 
     sub_bytes(entrada)  # Aplica Sub Bytes
 
@@ -294,6 +270,31 @@ for ronda in range(10):
                 salida += f"{entrada[index]:02X} "
             salida += '\n'
 
+    salida += "Estado antes de Add Round Key:\n"
+    for fila in range(4):
+        for columna in range(4):
+            index = fila + columna * 4
+            salida += f"{entrada[index]:02X} "
+        salida += '\n'
+
+    salida += "Subclave de la ronda actual:\n"
+    for fila in range(4):
+        for columna in range(4):
+            index = fila + columna * 4
+            salida += f"{subclave_actual[index]:02X} "
+        salida += '\n'
+
+    # Realiza Add Round Key
+    for i in range(len(entrada)):
+        entrada[i] ^= subclave_actual[i]
+
+    salida += "Estado después de Add Round Key:\n"
+    for fila in range(4):
+        for columna in range(4):
+            index = fila + columna * 4
+            salida += f"{entrada[index]:02X} "
+        salida += '\n'
+
 
 salida += '=' * 100 + '\n'
 
@@ -310,224 +311,8 @@ with open("resultado_aes.txt", "a", encoding="utf-8") as archivo:
     # Agregar el mensaje cifrado al final del archivo
     archivo.write("\n" + mensaje_cifrado)
 
-
-# Línea divisoria para el proceso de descifrado
-salida_descifrado = '=' * 100 + '\n'
-
-# Abre el archivo de texto en modo de lectura para obtener el mensaje cifrado
-with open("resultado_aes.txt", "r", encoding="utf-8") as archivo:
-    lineas = archivo.readlines()
-    # Obtén el mensaje cifrado en formato hexadecimal
-    mensaje_cifrado_hex = lineas[-1].strip().split(" ")[2:]
-
-mensaje_cifrado_bytes = [int(byte, 16) for byte in mensaje_cifrado_hex]
-
-# Realiza el proceso de descifrado inverso
-
-# Comienza con la subclave de la última ronda
-estado = mensaje_cifrado_bytes
-add_round_key(estado, subclaves[10])
-
-# Realiza las rondas de descifrado en orden inverso (9 a 0)
-for ronda in range(9, -1, -1):
-    salida_descifrado += f"\nRonda {ronda} (Descifrado):\n"
-    salida_descifrado += "Estado antes de Inverse Shift Rows:\n"
-    for fila in range(4):
-        for columna in range(4):
-            index = fila + columna * 4
-            salida_descifrado += f"{estado[index]:02X} "
-        salida_descifrado += '\n'
-
-    inverse_shift_rows(estado)  # Inverse Shift Rows
-
-    salida_descifrado += "Estado después de Inverse Shift Rows:\n"
-    for fila in range(4):
-        for columna in range(4):
-            index = fila + columna * 4
-            salida_descifrado += f"{estado[index]:02X} "
-        salida_descifrado += '\n'
-
-    inverse_sub_bytes(estado)  # Inverse Sub Bytes
-
-    salida_descifrado += "Estado después de Inverse Sub Bytes:\n"
-    for fila in range(4):
-        for columna in range(4):
-            index = fila + columna * 4
-            salida_descifrado += f"{estado[index]:02X} "
-        salida_descifrado += '\n'
-
-    # Realiza Inverse Add Round Key
-    add_round_key(estado, subclaves[ronda])
-
-    salida_descifrado += "Estado después de Inverse Add Round Key:\n"
-    for fila in range(4):
-        for columna in range(4):
-            index = fila + columna * 4
-            salida_descifrado += f"{estado[index]:02X} "
-        salida_descifrado += '\n'
-
-    if ronda > 0:  # No aplicar Inverse Mix Columns en la última ronda
-        estado = inverse_mix_columns(estado)  # Inverse Mix Columns
-
-        salida_descifrado += "Estado después de Inverse Mix Columns:\n"
-        for fila in range(4):
-            for columna in range(4):
-                index = fila + columna * 4
-                salida_descifrado += f"{estado[index]:02X} "
-            salida_descifrado += '\n'
-
-salida_descifrado += '=' * 100 + '\n'
-
-# Convierte el estado final a caracteres y quita el relleno PKCS7
-mensaje_descifrado = ""
-for byte in estado:
-    mensaje_descifrado += chr(byte)
-
-# Agrega el mensaje descifrado al resultado del descifrado
-salida_descifrado += f"Mensaje descifrado: {mensaje_descifrado}\n"
-
-# Guardar el resultado del descifrado en un archivo
-with open("resultado_aes_descifrado.txt", "w", encoding="utf-8") as archivo_descifrado:
-    archivo_descifrado.write(salida_descifrado)
-
-# Imprime mensaje de finalización
-print("Resultado del descifrado guardado en 'resultado_aes_descifrado.txt'")
-
 # Imprime mensaje de finalización
 print("Resultado guardado en 'resultado_aes.txt'")
 
 # Pausa la ejecución para que la consola no se cierre inmediatamente
 input("Presiona Enter para salir...")
-
-
-def imprimir_estado(estado):
-    for fila in range(4):
-        for columna in range(4):
-            index = fila + columna * 4
-            # Imprime el valor en formato hexadecimal con dos dígitos
-            print(f"{estado[index]:02X}", end=" ")
-        print()
-
-
-def imprimir_subclave(subclave):
-    for fila in range(4):
-        for columna in range(4):
-            index = fila + columna * 4
-            # Imprime el valor en formato hexadecimal con dos dígitos
-            print(f"{subclave[index]:02X}", end=" ")
-        print()
-
-
-def imprimir_estado_y_subclave(ronda, estado, subclave):
-    print(f"\nRonda {ronda}:")
-
-    print("Estado antes de Add Round Key:")
-    imprimir_estado(estado)
-
-    print("Subclave de la ronda actual:")
-    imprimir_estado(subclave)
-
-    print("Estado después de Add Round Key:")
-    imprimir_estado(estado)
-
-
-def sub_bytes(estado):
-    for i in range(len(estado)):
-        estado[i] = SBox[estado[i]]
-
-
-def aplicar_sub_bytes(estado):
-    for i in range(len(estado)):
-        estado[i] = SBox[estado[i]]
-
-# Función para guardar la salida en un archivo
-
-
-# Función para guardar la salida en un archivo
-def guardar_en_archivo(texto):
-    with open("resultado_aes.txt", "w", encoding="utf-8") as archivo:
-        archivo.write(texto)
-
-
-def shift_rows(estado):
-    # Realiza la operación "Shift Rows" en el estado.
-    for fila in range(1, 4):  # Comienza desde la segunda fila
-        # Desplaza la fila hacia la izquierda en función de su índice
-        estado[fila * 4:(fila + 1) * 4] = estado[fila * 4:(fila + 1)
-                                                 * 4][fila:] + estado[fila * 4:(fila + 1) * 4][:fila]
-
-
-def mix_columns(estado):
-    # Matriz fija de mezcla para MixColumns
-    matriz_mezcla = [
-        0x02, 0x03, 0x01, 0x01,
-        0x01, 0x02, 0x03, 0x01,
-        0x01, 0x01, 0x02, 0x03,
-        0x03, 0x01, 0x01, 0x02
-    ]
-
-    nuevo_estado = [0] * 16
-
-    for columna in range(4):
-        for fila in range(4):
-            resultado = 0
-            for i in range(4):
-                resultado ^= gf_mult(
-                    matriz_mezcla[i + columna * 4], estado[i + fila * 4])
-            nuevo_estado[columna * 4 + fila] = resultado
-
-    return nuevo_estado
-
-
-def gf_mult(a, b):
-    resultado = 0
-    for _ in range(8):
-        if b & 1:
-            resultado ^= a
-        a <<= 1
-        if a & 0x100:
-            a ^= 0x11B  # Polinomio irreducible para AES
-        b >>= 1
-    return resultado
-
-# Función para aplicar la operación Inverse Sub Bytes
-
-
-def inverse_sub_bytes(estado):
-    for i in range(len(estado)):
-        estado[i] = SBox.index(estado[i])
-
-# Función para desplazar las filas en sentido inverso
-
-
-def inverse_shift_rows(estado):
-    for fila in range(1, 4):
-        # Desplaza la fila hacia la derecha en función de su índice
-        estado[fila * 4:(fila + 1) * 4] = estado[fila * 4:(fila + 1)
-                                                 * 4][-fila:] + estado[fila * 4:(fila + 1) * 4][:-fila]
-
-# Función para realizar la operación Inverse Mix Columns
-
-
-def inverse_mix_columns(estado):
-    nuevo_estado = [0] * 16
-    matriz_mezcla_inversa = [
-        0x0E, 0x0B, 0x0D, 0x09,
-        0x09, 0x0E, 0x0B, 0x0D,
-        0x0D, 0x09, 0x0E, 0x0B,
-        0x0B, 0x0D, 0x09, 0x0E
-    ]
-
-    for columna in range(4):
-        for fila in range(4):
-            resultado = 0
-            for i in range(4):
-                resultado ^= gf_mult(
-                    matriz_mezcla_inversa[i + columna * 4], estado[i + fila * 4])
-            nuevo_estado[columna * 4 + fila] = resultado
-
-    return nuevo_estado
-
-
-# Línea divisoria
-salida = '=' * 100 + '\n'

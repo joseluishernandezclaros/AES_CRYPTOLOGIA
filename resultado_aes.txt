@@ -1,386 +1,392 @@
 ====================================================================================================
 
 Subclave 0 en formato hexadecimal:
-64 61 34 73 
-61 73 61 64 
-73 20 73 73 
-64 64 34 61 
+31 76 61 06 
+61 31 31 06 
+36 36 06 06 
+35 35 06 06 
 
 Subclave 1 en formato hexadecimal:
-88 12 55 17 
-EE 53 12 17 
-30 44 47 12 
-8B 50 47 05 
+DD 47 50 00 
+64 07 37 00 
+A0 03 00 00 
+0D 54 00 37 
 
 Subclave 2 en formato hexadecimal:
-4F 32 26 64 
-65 37 26 76 
-4E 70 34 76 
-AD 31 23 E9 
+71 71 56 06 
+81 32 31 06 
+E1 62 06 31 
+95 65 06 DB 
 
 Subclave 3 en formato hexadecimal:
-2A 56 12 05 
-4E 03 55 12 
-E6 11 50 9A 
-47 42 50 2E 
+3E 44 50 00 
+99 53 37 37 
+1C 53 00 DD 
+96 63 00 77 
 
 Subclave 4 en formato hexadecimal:
-48 62 61 61 
-EF 62 31 FE 
-D3 62 23 5D 
-D5 76 31 4B 
+DC 25 56 31 
+FD 62 31 DB 
+A6 55 06 71 
+2E 65 06 38 
 
 Subclave 5 en formato hexadecimal:
-54 70 64 E9 
-88 31 31 4A 
-33 32 76 59 
-21 31 26 4D 
+8A 25 61 DB 
+40 52 31 71 
+91 66 06 38 
+32 02 31 EB 
 
 Subclave 6 en formato hexadecimal:
-88 03 17 2E 
-A6 05 50 2F 
-B3 41 12 3B 
-FC 55 CA BD 
+7B 23 67 77 
+00 54 37 3E 
+C2 60 37 DA 
+AA 04 DD 51 
 
 Subclave 7 en formato hexadecimal:
-0D 53 42 2A 
-23 42 47 29 
-56 44 9A 27 
-3C 55 7E A6 
+5E 10 67 3E 
+BC 33 00 ED 
+B0 57 DD 8C 
+B0 04 77 0C 
 
 Subclave 8 en formato hexadecimal:
-6D 20 26 48 
-5E 26 AB D9 
-38 37 5D FB 
-38 34 1B 46 
+BA 16 56 DC 
+1A 35 EC 57 
+41 51 71 7D 
+E4 02 38 66 
 
 Subclave 9 en formato hexadecimal:
-0F 56 CF 30 
-8F 06 6C B1 
-34 06 6D 1F 
-96 17 6E 20 
+2B 10 8D 8C 
+C3 03 40 0C 
+F8 64 3E 5E 
+75 54 ED 51 
 
 Subclave 10 en formato hexadecimal:
-F8 05 7B 9F 
-BE 03 3D 30 
-23 56 7C 1B 
-4D 9A FA B2 
+56 20 27 7B 
+41 30 09 60 
+5F 34 DA 8B 
+60 89 51 7A 
+====================================================================================================
+Estado de Add Round Key Inicial:
+04 43 54 00 
+50 50 50 00 
+57 07 00 00 
+03 03 00 00 
 ====================================================================================================
 
 Ronda 0:
-Estado antes de Add Round Key:
-64 61 34 73 
-61 73 61 64 
-73 20 73 73 
-64 64 34 61 
-Subclave de la ronda actual:
-64 61 34 73 
-61 73 61 64 
-73 20 73 73 
-64 64 34 61 
-Estado después de Add Round Key:
-00 00 00 00 
-00 00 00 00 
-00 00 00 00 
-00 00 00 00 
 Estado después de Sub Bytes:
-63 63 63 63 
-63 63 63 63 
-63 63 63 63 
-63 63 63 63 
+F2 1A 20 63 
+53 53 53 63 
+5B C5 63 63 
+7B 7B 63 63 
 Estado después de Shift Rows:
-63 63 63 63 
-63 63 63 63 
-63 63 63 63 
-63 63 63 63 
+F2 53 63 63 
+53 C5 63 63 
+5B 7B 20 63 
+7B 1A 53 63 
 Estado después de Mix Columns:
+2A C2 9A F3 
+93 55 4E 7F 
+10 96 B5 40 
 63 63 63 63 
+Estado antes de Add Round Key:
+2A C2 9A F3 
+93 55 4E 7F 
+10 96 B5 40 
 63 63 63 63 
-63 63 63 63 
-63 63 63 63 
+Subclave de la ronda actual:
+31 76 61 06 
+61 31 31 06 
+36 36 06 06 
+35 35 06 06 
+Estado después de Add Round Key:
+1B B4 FB F5 
+F2 64 7F 79 
+26 A0 B3 46 
+56 56 65 65 
 
 Ronda 1:
-Estado antes de Add Round Key:
-63 63 63 63 
-63 63 63 63 
-63 63 63 63 
-63 63 63 63 
-Subclave de la ronda actual:
-88 12 55 17 
-EE 53 12 17 
-30 44 47 12 
-8B 50 47 05 
-Estado después de Add Round Key:
-EB 71 36 74 
-8D 30 71 74 
-53 27 24 71 
-E8 33 24 66 
 Estado después de Sub Bytes:
-E9 A3 05 92 
-5D 04 A3 92 
-ED CC 36 A3 
-9B C3 36 33 
+AF 8D 0F E6 
+89 43 D2 B6 
+F7 E0 6D 5A 
+B1 B1 4D 4D 
 Estado después de Shift Rows:
-E9 04 36 33 
-5D CC 36 92 
-ED C3 05 92 
-9B A3 A3 A3 
+AF 43 6D 4D 
+89 E0 4D E6 
+F7 B1 0F B6 
+B1 8D D2 5A 
 Estado después de Mix Columns:
-58 E4 C3 BD 
-27 7A AB 5E 
-90 F6 F4 34 
-FA 02 60 08 
+83 15 1B ED 
+81 DD 56 95 
+D0 34 53 4A 
+47 01 32 33 
+Estado antes de Add Round Key:
+83 15 1B ED 
+81 DD 56 95 
+D0 34 53 4A 
+47 01 32 33 
+Subclave de la ronda actual:
+DD 47 50 00 
+64 07 37 00 
+A0 03 00 00 
+0D 54 00 37 
+Estado después de Add Round Key:
+5E 52 4B ED 
+E5 DA 61 95 
+70 37 53 4A 
+4A 55 32 04 
 
 Ronda 2:
-Estado antes de Add Round Key:
-58 E4 C3 BD 
-27 7A AB 5E 
-90 F6 F4 34 
-FA 02 60 08 
-Subclave de la ronda actual:
-4F 32 26 64 
-65 37 26 76 
-4E 70 34 76 
-AD 31 23 E9 
-Estado después de Add Round Key:
-17 D6 E5 D9 
-42 4D 8D 28 
-DE 86 C0 42 
-57 33 43 E1 
 Estado después de Sub Bytes:
-F0 F6 D9 35 
-2C E3 5D 34 
-1D 44 BA 2C 
-5B C3 1A F8 
+58 00 B3 55 
+D9 57 EF 2A 
+51 9A ED D6 
+D6 FC 23 F2 
 Estado después de Shift Rows:
-F0 E3 BA F8 
-2C 44 1A 35 
-1D C3 D9 34 
-5B F6 5D 2C 
+58 57 ED F2 
+D9 9A 23 55 
+51 FC B3 2A 
+D6 00 EF D6 
 Estado después de Mix Columns:
-C9 D4 0B 8C 
-24 C3 3B 4E 
-C5 A3 EE AC 
-AC E2 D1 4A 
+47 D4 42 D7 
+E7 67 2E 9F 
+F8 8A 99 79 
+FC F0 92 C5 
+Estado antes de Add Round Key:
+47 D4 42 D7 
+E7 67 2E 9F 
+F8 8A 99 79 
+FC F0 92 C5 
+Subclave de la ronda actual:
+71 71 56 06 
+81 32 31 06 
+E1 62 06 31 
+95 65 06 DB 
+Estado después de Add Round Key:
+36 A5 14 D1 
+66 55 1F 99 
+19 E8 9F 48 
+69 95 94 1E 
 
 Ronda 3:
-Estado antes de Add Round Key:
-C9 D4 0B 8C 
-24 C3 3B 4E 
-C5 A3 EE AC 
-AC E2 D1 4A 
-Subclave de la ronda actual:
-2A 56 12 05 
-4E 03 55 12 
-E6 11 50 9A 
-47 42 50 2E 
-Estado después de Add Round Key:
-E3 82 19 89 
-6A C0 6E 5C 
-23 B2 BE 36 
-EB A0 81 64 
 Estado después de Sub Bytes:
-11 13 D4 A7 
-02 BA 9F 4A 
-26 37 AE 05 
-E9 E0 0C 43 
+05 06 FA 3E 
+33 FC C0 EE 
+D4 9B DB 52 
+F9 2A 22 72 
 Estado después de Shift Rows:
-11 BA AE 43 
-02 37 0C A7 
-26 E0 D4 4A 
-E9 13 9F 05 
+05 FC DB 72 
+33 9B 22 3E 
+D4 2A FA EE 
+F9 06 C0 52 
 Estado después de Mix Columns:
-EB 96 7F DE 
-C5 FC 63 24 
-18 4E AB 14 
-3B CD 7F 22 
+72 FD 95 01 
+79 A9 39 A2 
+F1 4A 4D 35 
+1A 75 7D E2 
+Estado antes de Add Round Key:
+72 FD 95 01 
+79 A9 39 A2 
+F1 4A 4D 35 
+1A 75 7D E2 
+Subclave de la ronda actual:
+3E 44 50 00 
+99 53 37 37 
+1C 53 00 DD 
+96 63 00 77 
+Estado después de Add Round Key:
+4C B9 C5 01 
+E0 FA 0E 95 
+ED 19 4D E8 
+8C 16 7D 95 
 
 Ronda 4:
-Estado antes de Add Round Key:
-EB 96 7F DE 
-C5 FC 63 24 
-18 4E AB 14 
-3B CD 7F 22 
-Subclave de la ronda actual:
-48 62 61 61 
-EF 62 31 FE 
-D3 62 23 5D 
-D5 76 31 4B 
-Estado después de Add Round Key:
-A3 F4 1E BF 
-2A 9E 52 DA 
-CB 2C 88 49 
-EE BB 4E 69 
 Estado después de Sub Bytes:
-0A BF 72 08 
-E5 0B 00 57 
-1F 71 C4 3B 
-28 EA 2F F9 
+29 56 A6 7C 
+E1 2D AB 2A 
+55 D4 E3 9B 
+64 47 FF 2A 
 Estado después de Shift Rows:
-0A 0B C4 F9 
-E5 71 2F 08 
-1F EA 72 57 
-28 BF 00 3B 
+29 2D E3 2A 
+E1 D4 FF 7C 
+55 47 A6 2A 
+64 56 AB 9B 
 Estado después de Mix Columns:
-17 D2 A9 B4 
-D0 73 6F E3 
-90 0C 0F 0A 
-9D 2B 12 39 
+5B 6B CE 07 
+2C 01 8D 48 
+CA 5C AD 2A 
+61 37 B4 05 
+Estado antes de Add Round Key:
+5B 6B CE 07 
+2C 01 8D 48 
+CA 5C AD 2A 
+61 37 B4 05 
+Subclave de la ronda actual:
+DC 25 56 31 
+FD 62 31 DB 
+A6 55 06 71 
+2E 65 06 38 
+Estado después de Add Round Key:
+87 4E 98 36 
+D1 63 BC 93 
+6C 09 AB 5B 
+4F 52 B2 3D 
 
 Ronda 5:
-Estado antes de Add Round Key:
-17 D2 A9 B4 
-D0 73 6F E3 
-90 0C 0F 0A 
-9D 2B 12 39 
-Subclave de la ronda actual:
-54 70 64 E9 
-88 31 31 4A 
-33 32 76 59 
-21 31 26 4D 
-Estado después de Add Round Key:
-43 A2 CD 5D 
-58 42 5E A9 
-A3 3E 79 53 
-BC 1A 34 74 
 Estado después de Sub Bytes:
-1A 3A BD 4C 
-6A 2C 58 D3 
-0A B2 B6 ED 
-65 A2 18 92 
+17 2F 46 05 
+3E FB 65 DC 
+50 01 62 39 
+84 00 37 27 
 Estado después de Shift Rows:
-1A 2C B6 92 
-6A B2 18 4C 
-0A A2 BD D3 
-65 3A 58 ED 
+17 FB 62 27 
+3E 01 37 05 
+50 00 46 DC 
+84 2F 65 39 
 Estado después de Mix Columns:
-E5 B5 CB 84 
-0D 94 8F 10 
-BA 02 27 D4 
-D5 89 4F F3 
+B8 1F 1E 44 
+C1 D6 8B 49 
+BE A3 76 1D 
+A4 6B CA C2 
+Estado antes de Add Round Key:
+B8 1F 1E 44 
+C1 D6 8B 49 
+BE A3 76 1D 
+A4 6B CA C2 
+Subclave de la ronda actual:
+8A 25 61 DB 
+40 52 31 71 
+91 66 06 38 
+32 02 31 EB 
+Estado después de Add Round Key:
+32 3A 7F 9F 
+81 84 BA 38 
+2F C5 70 25 
+96 69 FB 29 
 
 Ronda 6:
-Estado antes de Add Round Key:
-E5 B5 CB 84 
-0D 94 8F 10 
-BA 02 27 D4 
-D5 89 4F F3 
-Subclave de la ronda actual:
-88 03 17 2E 
-A6 05 50 2F 
-B3 41 12 3B 
-FC 55 CA BD 
-Estado después de Add Round Key:
-6D B6 DC AA 
-AB 91 DF 3F 
-09 43 35 EF 
-29 DC 85 4E 
 Estado después de Sub Bytes:
-3C 4E 86 AC 
-62 81 9E 75 
-01 1A 96 DF 
-A5 86 97 2F 
+23 80 D2 DB 
+0C 5F F4 07 
+15 A6 51 3F 
+90 F9 0F A5 
 Estado después de Shift Rows:
-3C 81 96 2F 
-62 1A 97 AC 
-01 86 86 75 
-A5 4E 9E DF 
+23 5F 51 A5 
+0C A6 0F DB 
+15 F9 D2 07 
+90 80 F4 3F 
 Estado después de Mix Columns:
-7A 5E A8 76 
-FF 6A 5E 98 
-8D AC AF 97 
-1B 2C 13 0D 
+D7 94 AE 47 
+36 98 8B A5 
+95 D6 E6 DD 
+1F 3E 31 56 
+Estado antes de Add Round Key:
+D7 94 AE 47 
+36 98 8B A5 
+95 D6 E6 DD 
+1F 3E 31 56 
+Subclave de la ronda actual:
+7B 23 67 77 
+00 54 37 3E 
+C2 60 37 DA 
+AA 04 DD 51 
+Estado después de Add Round Key:
+AC B7 C9 30 
+36 CC BC 9B 
+57 B6 D1 07 
+B5 3A EC 07 
 
 Ronda 7:
-Estado antes de Add Round Key:
-7A 5E A8 76 
-FF 6A 5E 98 
-8D AC AF 97 
-1B 2C 13 0D 
-Subclave de la ronda actual:
-0D 53 42 2A 
-23 42 47 29 
-56 44 9A 27 
-3C 55 7E A6 
-Estado después de Add Round Key:
-77 0D EA 5C 
-DC 28 19 B1 
-DB E8 35 B0 
-27 79 6D AB 
 Estado después de Sub Bytes:
-F5 D7 87 4A 
-86 34 D4 C8 
-B9 9B 96 E7 
-CC B6 3C 62 
+91 A9 DD 04 
+05 4B 65 14 
+5B 4E 3E C5 
+D5 80 CE C5 
 Estado después de Shift Rows:
-F5 34 96 62 
-86 9B 3C 4A 
-B9 B6 87 C8 
-CC D7 D4 E7 
+91 4B 3E C5 
+05 4E CE 04 
+5B 80 DD 14 
+D5 A9 65 C5 
 Estado después de Mix Columns:
-15 FE 55 B8 
-BF 0F BA C4 
-20 A8 D8 A9 
-35 52 91 F1 
+B8 A3 46 47 
+6D E5 FE 5A 
+8D A0 FE 9B 
+4C 34 BD D5 
+Estado antes de Add Round Key:
+B8 A3 46 47 
+6D E5 FE 5A 
+8D A0 FE 9B 
+4C 34 BD D5 
+Subclave de la ronda actual:
+5E 10 67 3E 
+BC 33 00 ED 
+B0 57 DD 8C 
+B0 04 77 0C 
+Estado después de Add Round Key:
+E6 B3 21 79 
+D1 D6 FE B7 
+3D F7 23 17 
+FC 30 CA D9 
 
 Ronda 8:
-Estado antes de Add Round Key:
-15 FE 55 B8 
-BF 0F BA C4 
-20 A8 D8 A9 
-35 52 91 F1 
-Subclave de la ronda actual:
-6D 20 26 48 
-5E 26 AB D9 
-38 37 5D FB 
-38 34 1B 46 
-Estado después de Add Round Key:
-78 DE 73 F0 
-E1 29 11 1D 
-18 9F 85 52 
-0D 66 8A B7 
 Estado después de Sub Bytes:
-BC 1D 8F 8C 
-F8 A5 82 A4 
-AD DB 97 00 
-D7 33 7E A9 
+8E 6D FD B6 
+3E F6 BB A9 
+27 68 26 F0 
+B0 04 74 35 
 Estado después de Shift Rows:
-BC A5 97 A9 
-F8 DB 7E 8C 
-AD 33 8F A4 
-D7 1D 82 00 
+8E F6 26 35 
+3E 68 74 B6 
+27 04 FD A9 
+B0 6D BB F0 
 Estado después de Mix Columns:
-0A 6C 67 3F 
-09 40 3F 26 
-BA 63 71 4C 
-62 5D 76 C8 
+D2 2B 35 EB 
+26 47 21 B7 
+96 69 65 8E 
+F2 52 C1 BB 
+Estado antes de Add Round Key:
+D2 2B 35 EB 
+26 47 21 B7 
+96 69 65 8E 
+F2 52 C1 BB 
+Subclave de la ronda actual:
+BA 16 56 DC 
+1A 35 EC 57 
+41 51 71 7D 
+E4 02 38 66 
+Estado después de Add Round Key:
+68 3D 63 37 
+3C 72 CD E0 
+D7 38 14 F3 
+16 50 F9 DD 
 
 Ronda 9:
-Estado antes de Add Round Key:
-0A 6C 67 3F 
-09 40 3F 26 
-BA 63 71 4C 
-62 5D 76 C8 
-Subclave de la ronda actual:
-0F 56 CF 30 
-8F 06 6C B1 
-34 06 6D 1F 
-96 17 6E 20 
-Estado después de Add Round Key:
-05 3A A8 0F 
-86 46 53 97 
-8E 65 1C 53 
-F4 4A 18 E8 
 Estado después de Sub Bytes:
-6B 80 C2 76 
-44 5A ED 88 
-19 4D 9C ED 
-BF D6 AD 9B 
+45 27 FB 9A 
+EB 40 BD E1 
+0E 07 FA 0D 
+47 53 99 C1 
 Estado después de Shift Rows:
-6B 5A 9C 9B 
-44 4D AD 76 
-19 D6 C2 88 
-BF 80 ED ED 
+45 40 FA C1 
+EB 07 99 9A 
+0E 53 FB E1 
+47 27 BD 0D 
+Estado antes de Add Round Key:
+45 40 FA C1 
+EB 07 99 9A 
+0E 53 FB E1 
+47 27 BD 0D 
+Subclave de la ronda actual:
+2B 10 8D 8C 
+C3 03 40 0C 
+F8 64 3E 5E 
+75 54 ED 51 
+Estado después de Add Round Key:
+6E 50 77 4D 
+28 04 D9 96 
+F6 37 C5 BF 
+32 73 50 5C 
 ====================================================================================================
 
-Mensaje cifrado: 6B 44 19 BF 5A 4D D6 80 9C AD C2 ED 9B 76 88 ED 
+Mensaje cifrado: 6E 28 F6 32 50 04 37 73 77 D9 C5 50 4D 96 BF 5C 

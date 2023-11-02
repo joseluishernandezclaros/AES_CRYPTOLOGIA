@@ -19,12 +19,36 @@ SBox = (
 )
 
 
-# Función para aplicar el relleno PKCS7 a un texto
 def aplicar_relleno_PKCS7(texto, tamaño_bloque):
     longitud_texto = len(texto)
     caracteres_restantes = tamaño_bloque - (longitud_texto % tamaño_bloque)
-    texto_relleno = texto + chr(caracteres_restantes) * caracteres_restantes
+    if caracteres_restantes != 0:
+        texto_relleno = texto + \
+            chr(caracteres_restantes) * (tamaño_bloque - longitud_texto)
+    else:
+        texto_relleno = texto
     return texto_relleno
+
+
+def rellenar_con_PKCS7(texto, clave):
+    longitud_texto = len(texto)
+    caracteres_restantes_texto = 16 - (longitud_texto % 16)
+    if caracteres_restantes_texto != 0:
+        texto_relleno = texto + \
+            chr(caracteres_restantes_texto) * caracteres_restantes_texto
+    else:
+        texto_relleno = texto
+
+    longitud_clave = len(clave)
+    caracteres_restantes_clave = 16 - (longitud_clave % 16)
+    if caracteres_restantes_clave != 0:
+        clave_relleno = clave + \
+            chr(caracteres_restantes_clave) * caracteres_restantes_clave
+    else:
+        clave_relleno = clave
+
+    return texto_relleno, clave_relleno
+
 
 # Función para generar subclaves
 
@@ -52,14 +76,14 @@ def generar_subclaves(clave):
 
 
 def add_round_key(estado, subclave):
-    print("Estado antes de Add Round Key:")
+    # print("Estado antes de Add Round Key:")
     imprimir_estado(estado)  # Imprime el estado antes de aplicar Add Round Key
     # Realiza la operación XOR en cada byte del estado con la subclave
     for i in range(len(estado)):
         estado[i] ^= subclave[i]
-    print("Subclave de la ronda actual:")
+   # print("Subclave de la ronda actual:")
     imprimir_estado(subclave)
-    print("Estado después de Add Round Key:")
+    # print("Estado después de Add Round Key:")
     imprimir_estado(estado)
 
 
@@ -68,8 +92,8 @@ def imprimir_estado(estado):
         for columna in range(4):
             index = fila + columna * 4
             # Imprime el valor en formato hexadecimal con dos dígitos
-            print(f"{estado[index]:02X}", end=" ")
-        print()
+            # print(f"{estado[index]:02X}", end=" ")
+        # print()
 
 
 def imprimir_subclave(subclave):
@@ -77,20 +101,20 @@ def imprimir_subclave(subclave):
         for columna in range(4):
             index = fila + columna * 4
             # Imprime el valor en formato hexadecimal con dos dígitos
-            print(f"{subclave[index]:02X}", end=" ")
-        print()
+           # print(f"{subclave[index]:02X}", end=" ")
+        # print()
 
 
 def imprimir_estado_y_subclave(ronda, estado, subclave):
-    print(f"\nRonda {ronda}:")
+   # print(f"\nRonda {ronda}:")
 
-    print("Estado antes de Add Round Key:")
+    # print("Estado antes de Add Round Key:")
     imprimir_estado(estado)
 
-    print("Subclave de la ronda actual:")
+    # print("Subclave de la ronda actual:")
     imprimir_estado(subclave)
 
-    print("Estado después de Add Round Key:")
+    # print("Estado después de Add Round Key:")
     imprimir_estado(estado)
 
 
@@ -153,35 +177,30 @@ def gf_mult(a, b):
         b >>= 1
     return resultado
 
+# Función para agregar la clave principal al texto plano
+
+
+def add_round_key_inicio(estado, clave_principal):
+    for i in range(len(estado)):
+        estado[i] ^= clave_principal[i]
+
 
 # Línea divisoria
 salida = '=' * 100 + '\n'
 
-# Solicita la entrada del usuario y verifica que tenga una longitud de 16 caracteres
-entrada = input("Por favor, ingresa un texto de exactamente 16 caracteres: ")
-while len(entrada) != 16:
-    diferencia = 16 - len(entrada)
-    if diferencia > 0:
-        print(
-            f"El texto no tiene la longitud correcta. Faltan {diferencia} caracteres para ser 16.")
-    else:
-        print(
-            f"El texto no tiene la longitud correcta. Hay {abs(diferencia)} caracteres de más.")
-    entrada = input(
-        "Por favor, ingresa un texto de exactamente 16 caracteres: ")
+# Reemplaza esta parte del código para ingresar texto y clave con relleno
+entrada = input("Por favor, ingresa un texto: ")[
+    :16]  # Limita el texto a 16 caracteres
+clave = input("Por favor, ingresa una clave: ")[
+    :16]  # Limita la clave a 16 caracteres
 
-# Solicita la clave del usuario y verifica que tenga una longitud de 16 caracteres
-clave = input("Por favor, ingresa una clave de exactamente 16 caracteres: ")
-while len(clave) != 16:
-    diferencia = 16 - len(clave)
-    if diferencia > 0:
-        print(
-            f"La clave no tiene la longitud correcta. Faltan {diferencia} caracteres para ser 16.")
-    else:
-        print(
-            f"La clave no tiene la longitud correcta. Hay {abs(diferencia)} caracteres de más.")
-    clave = input(
-        "Por favor, ingresa una clave de exactamente 16 caracteres: ")
+
+# Con la llamada a la función rellenar_con_PKCS7
+entrada, clave = rellenar_con_PKCS7(entrada, clave)
+
+# Imprimir el texto con relleno y la clave con relleno
+print(f"Texto con relleno: {entrada}")
+print(f"Clave con relleno: {clave}")
 
 
 # Convierte la entrada a una lista de enteros
@@ -202,36 +221,25 @@ for i, subclave in enumerate(subclaves):
             salida += f"{subclave[index]:02X} "
         salida += '\n'
 
+
+salida += '=' * 100 + '\n'
+
+# Aplica "Add Round Key" al comienzo con la clave principal
+add_round_key_inicio(entrada, clave_bytes)
+
+# Agrega esta parte para mostrar el Add Round Key Inicial en el archivo
+salida += "Estado de Add Round Key Inicial:\n"
+for fila in range(4):
+    for columna in range(4):
+        index = fila + columna * 4
+        salida += f"{entrada[index]:02X} "
+    salida += '\n'
+
 salida += '=' * 100 + '\n'
 
 for ronda in range(10):
     subclave_actual = subclaves[ronda]
     salida += f"\nRonda {ronda}:\n"
-
-    salida += "Estado antes de Add Round Key:\n"
-    for fila in range(4):
-        for columna in range(4):
-            index = fila + columna * 4
-            salida += f"{entrada[index]:02X} "
-        salida += '\n'
-
-    salida += "Subclave de la ronda actual:\n"
-    for fila in range(4):
-        for columna in range(4):
-            index = fila + columna * 4
-            salida += f"{subclave_actual[index]:02X} "
-        salida += '\n'
-
-    # Realiza Add Round Key
-    for i in range(len(entrada)):
-        entrada[i] ^= subclave_actual[i]
-
-    salida += "Estado después de Add Round Key:\n"
-    for fila in range(4):
-        for columna in range(4):
-            index = fila + columna * 4
-            salida += f"{entrada[index]:02X} "
-        salida += '\n'
 
     sub_bytes(entrada)  # Aplica Sub Bytes
 
@@ -261,6 +269,31 @@ for ronda in range(10):
                 index = fila + columna * 4
                 salida += f"{entrada[index]:02X} "
             salida += '\n'
+
+    salida += "Estado antes de Add Round Key:\n"
+    for fila in range(4):
+        for columna in range(4):
+            index = fila + columna * 4
+            salida += f"{entrada[index]:02X} "
+        salida += '\n'
+
+    salida += "Subclave de la ronda actual:\n"
+    for fila in range(4):
+        for columna in range(4):
+            index = fila + columna * 4
+            salida += f"{subclave_actual[index]:02X} "
+        salida += '\n'
+
+    # Realiza Add Round Key
+    for i in range(len(entrada)):
+        entrada[i] ^= subclave_actual[i]
+
+    salida += "Estado después de Add Round Key:\n"
+    for fila in range(4):
+        for columna in range(4):
+            index = fila + columna * 4
+            salida += f"{entrada[index]:02X} "
+        salida += '\n'
 
 
 salida += '=' * 100 + '\n'
