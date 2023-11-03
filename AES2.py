@@ -96,12 +96,15 @@ def generar_subclaves(clave):
 
 def add_round_key(estado, subclave):
     # print("Estado antes de Add Round Key:")
+    # print("Estado antes de Add Round Key:")
     imprimir_estado(estado)  # Imprime el estado antes de aplicar Add Round Key
     # Realiza la operación XOR en cada byte del estado con la subclave
     for i in range(len(estado)):
         estado[i] ^= subclave[i]
    # print("Subclave de la ronda actual:")
+   # print("Subclave de la ronda actual:")
     imprimir_estado(subclave)
+    # print("Estado después de Add Round Key:")
     # print("Estado después de Add Round Key:")
     imprimir_estado(estado)
 
@@ -113,6 +116,8 @@ def imprimir_estado(estado):
             # Imprime el valor en formato hexadecimal con dos dígitos
             # print(f"{estado[index]:02X}", end=" ")
         # print()
+            # print(f"{estado[index]:02X}", end=" ")
+        # print()
 
 
 def imprimir_subclave(subclave):
@@ -122,17 +127,23 @@ def imprimir_subclave(subclave):
             # Imprime el valor en formato hexadecimal con dos dígitos
            # print(f"{subclave[index]:02X}", end=" ")
         # print()
+           # print(f"{subclave[index]:02X}", end=" ")
+        # print()
 
 
 def imprimir_estado_y_subclave(ronda, estado, subclave):
    # print(f"\nRonda {ronda}:")
+   # print(f"\nRonda {ronda}:")
 
+    # print("Estado antes de Add Round Key:")
     # print("Estado antes de Add Round Key:")
     imprimir_estado(estado)
 
     # print("Subclave de la ronda actual:")
+    # print("Subclave de la ronda actual:")
     imprimir_estado(subclave)
 
+    # print("Estado después de Add Round Key:")
     # print("Estado después de Add Round Key:")
     imprimir_estado(estado)
 
@@ -319,6 +330,21 @@ for fila in range(4):
         index = fila + columna * 4
         salida += f"{entrada[index]:02X} "
     salida += '\n'
+        salida += '\n'
+
+
+salida += '=' * 100 + '\n'
+
+# Aplica "Add Round Key" al comienzo con la clave principal
+add_round_key_inicio(entrada, clave_bytes)
+
+# Agrega esta parte para mostrar el Add Round Key Inicial en el archivo
+salida += "Estado de Add Round Key Inicial:\n"
+for fila in range(4):
+    for columna in range(4):
+        index = fila + columna * 4
+        salida += f"{entrada[index]:02X} "
+    salida += '\n'
 
 salida += '=' * 100 + '\n'
 
@@ -349,6 +375,36 @@ for ronda in range(10):
         entrada = mix_columns(entrada)
 
         salida += "Estado después de Mix Columns:\n"
+        for fila in range(4):
+            for columna in range(4):
+                index = fila + columna * 4
+                salida += f"{entrada[index]:02X} "
+            salida += '\n'
+
+    salida += "Estado antes de Add Round Key:\n"
+    for fila in range(4):
+        for columna in range(4):
+            index = fila + columna * 4
+            salida += f"{entrada[index]:02X} "
+        salida += '\n'
+
+    salida += "Subclave de la ronda actual:\n"
+    for fila in range(4):
+        for columna in range(4):
+            index = fila + columna * 4
+            salida += f"{subclave_actual[index]:02X} "
+        salida += '\n'
+
+    # Realiza Add Round Key
+    for i in range(len(entrada)):
+        entrada[i] ^= subclave_actual[i]
+
+    salida += "Estado después de Add Round Key:\n"
+    for fila in range(4):
+        for columna in range(4):
+            index = fila + columna * 4
+            salida += f"{entrada[index]:02X} "
+        salida += '\n'
         for fila in range(4):
             for columna in range(4):
                 index = fila + columna * 4
